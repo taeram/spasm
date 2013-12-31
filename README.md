@@ -38,13 +38,13 @@ Local development setup:
     python manage.py database create
 
     # Login to your Mailgun account, and setup a SPAM catchall route with the
-    # following properties.
-    ```
-        Priority: 0
-        Expression: match_header('X-Mailgun-SFlag', 'Yes')
-        Action: forward("https://your-domain.com/spam"), stop()
-        Description: Spam Management
-    ```
+    # following properties:
+    #
+    #    Priority: 0
+    #    Expression: match_header('X-Mailgun-SFlag', 'Yes')
+    #    Action: forward("https://your-domain.com/spam"), stop()
+    #    Description: Spam Management
+    #
     # This route tells Mailgun to forward anything detected as SPAM to Spasm
 
     # In your Mailgun account, grab your API Key for the next step. It should
