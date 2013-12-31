@@ -76,11 +76,11 @@ Heroku setup:
     # Set the flask environment
     heroku config:set FLASK_ENV=production
 
-    # Create the production database
-    heroku run python manage.py database create
-
     # Push to Heroku
     git push heroku master
+
+    # Create the production database
+    heroku run python manage.py database create
 ```
 
 Usage
