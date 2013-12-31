@@ -42,7 +42,7 @@ Local development setup:
     ```
         Priority: 0
         Expression: match_header('X-Mailgun-SFlag', 'Yes')
-        Action: forward("https://radpenguin-system-status.herokuapp.com/spam"), stop()
+        Action: forward("https://your-domain.com/spam"), stop()
         Description: Spam Management
     ```
     # This route tells Mailgun to forward anything detected as SPAM to Spasm
