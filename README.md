@@ -6,8 +6,8 @@ Spasm is a spam management tool for [Mailgun](http://mailgun.com).
 Spasm will intercept forwarded SPAM from Mailgun, allowing you to preview and
 delete the SPAM messages.
 
-Spasm also provides a wrapper around the Mailgun Routes API, allowing adding new
-routes to Mailgun.
+Spasm also provides a wrapper around the Mailgun Routes API, allowing you to
+blacklist email addresses by adding new Mailgun routes.
 
 Requirements
 ============
