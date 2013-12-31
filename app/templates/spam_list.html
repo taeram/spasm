@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}Spam List{% endblock %}
+
+{% block body %}
+
+    <button {% if emails|length <= 1 %} disabled {% endif %} class="btn btn-danger btn-all" style="cursor: pointer; float: right" data-url="{{ url_for('spam_item', id='all') }}"><i class="fa fa-trash-o" style="padding-right: 5px"></i>Delete All</button>
+
+    <table class="table table-striped">
+        {% if emails|length > 1 %}
+        <caption>{{ emails|length }} Emails</caption>
+        {% endif %}
+        <colgroup>
+            <col />
+            <col />
+            <col style="width: 1000%; "/>
+            <col />
+            <col />
+        </colgroup>
+        <thead>
+            <tr>
+                <th style="white-space: nowrap">Spam Score</th>
+                <th>To</th>
+                <th>Subject</th>
+                <th>From</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+                <tr>
+                    <td>{{ email.spam_score }}</td>
+                    <td>{{ email.to_header }}</td>
+                    <td>{{ email.subject_header }}</td>
+                    <td>{{ email.from_header }}</td>
+                    <td>
+                        <a class="btn-toggle" style="cursor: pointer"><i class="fa fa-angle-double-down"></i></a>
+                    </td>
+                </tr>
+                <tr style="display: none">
+                    <td colspan="999">
+                        {{ email.text_body }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="999" style="text-align: center">
+                        No emails found
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(function() {
+            var API_KEY="{{ config['API_KEY'] }}";
+
+            // Delete all
+            $('.btn-all').on('click', function () {
+                var url = window.location.origin + $(this).data('url');
+                var self = this;
+                $.ajax({
+                    url: url,
+                    headers: {
+                        'Authorization': API_KEY
+                    },
+                    type: 'DELETE'
+                }).done(function() {
+                    window.location.reload();
+                });
+            });
+
+            // Toggle the email body
+            $('.btn-toggle').on('click', function () {
+                $(this).parent().parent().next().toggle();
+            });
+        });
+    </script>
+{% endblock %}
