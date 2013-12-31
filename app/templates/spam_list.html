@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <button {% if emails|length <= 1 %} disabled {% endif %} class="btn btn-danger btn-all" style="cursor: pointer; float: right" data-url="{{ url_for('spam_item', id='all') }}"><i class="fa fa-trash-o" style="padding-right: 5px"></i>Delete All</button>
+    <button {% if emails|length <= 1 %} disabled {% endif %} class="btn btn-danger btn-all" style="cursor: pointer; float: right" data-url="{{ url_for('spam') }}"><i class="fa fa-trash-o" style="padding-right: 5px"></i>Delete All</button>
 
     <table class="table table-striped">
         {% if emails|length > 1 %}
