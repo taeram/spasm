@@ -141,3 +141,7 @@ curl -X POST http://your-domain.com/spam/routes/9a8b7c6d -H "Authorization: secr
 ```
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/taeram/spasm/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
