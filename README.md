@@ -10,6 +10,8 @@ protecting the email reputation of your domain.
 Spasm also provides a wrapper around the Mailgun Routes API, allowing you to
 blacklist email addresses by adding new Mailgun routes.
 
+![spasm-screenshot](http://taeram.github.io/media/spasm-screenshot.png)
+
 Requirements
 ============
 You'll need the following:
@@ -139,5 +141,3 @@ To blacklist an email address, and add a description to the route:
 ```bash
 curl -X POST http://your-domain.com/spam/routes/9a8b7c6d -H "Authorization: secret_api_key" -F "local=scooter&domain=example.com&description=ih8scooter"
 ```
-
-
