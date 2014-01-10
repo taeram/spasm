@@ -48,12 +48,12 @@ def spam():
     elif request.method == 'POST':
         try:
             row = Spam(
-                to_header=request.form['recipient'],
-                from_header=request.form['sender'],
-                subject_header=request.form['subject'],
-                text_body=request.form['body-plain'],
-                html_body=request.form['body-html'],
-                spam_score=request.form['X-Mailgun-Sscore']
+                to_header=request.form.get('recipient'),
+                from_header=request.form.get('sender'),
+                subject_header=request.form.get('subject'),
+                text_body=request.form.get('body-plain'),
+                html_body=request.form.get('body-html'),
+                spam_score=request.form.get('X-Mailgun-Sscore')
             )
             db.session.add(row)
             db.session.commit()
