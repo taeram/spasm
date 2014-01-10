@@ -58,9 +58,7 @@ def spam():
             db.session.add(row)
             db.session.commit()
         except:
-            print "Error saving Spam:"
-            for k in request.form:
-                print "    %s: %s" % (k, request.form[k])
+            print "Error saving Spam: %s" % json.dumps(request.form)
 
         return app.response_class(response='{"status": "ok"}', mimetype='application/json')
 
