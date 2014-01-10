@@ -59,6 +59,7 @@ def spam():
             db.session.commit()
         except:
             print "Error saving Spam: %s" % json.dumps(request.form)
+            return app.response_class(response='{"status": "error"}', mimetype='application/json', status=400)
 
         return app.response_class(response='{"status": "ok"}', mimetype='application/json')
 
