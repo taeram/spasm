@@ -46,16 +46,21 @@ def spam():
         return app.response_class(response=json.dumps(response), mimetype='application/json')
 
     elif request.method == 'POST':
-        row = Spam(
-            to_header=request.form['recipient'],
-            from_header=request.form['sender'],
-            subject_header=request.form['subject'],
-            text_body=request.form['body-plain'],
-            html_body=request.form['body-html'],
-            spam_score=request.form['X-Mailgun-Sscore']
-        )
-        db.session.add(row)
-        db.session.commit()
+        try:
+            row = Spam(
+                to_header=request.form['recipient'],
+                from_header=request.form['sender'],
+                subject_header=request.form['subject'],
+                text_body=request.form['body-plain'],
+                html_body=request.form['body-html'],
+                spam_score=request.form['X-Mailgun-Sscore']
+            )
+            db.session.add(row)
+            db.session.commit()
+        except:
+            print "Error saving Spam:"
+            for k in request.form:
+                print "    %s: %s" % (k, request.form[k])
 
         return app.response_class(response='{"status": "ok"}', mimetype='application/json')
 
