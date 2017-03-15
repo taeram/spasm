@@ -1,5 +1,8 @@
 *.py[cod]
 
+# Lets Encrypt
+.well-known
+
 # C extensions
 *.so
 
