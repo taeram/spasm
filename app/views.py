@@ -10,10 +10,6 @@ from helpers import is_authenticated
 import requests
 import json
 
-@app.route('/.well-known/acme-challenge/<filename>')
-def letsencrypt(filename):
-    return send_from_directory(os.path.join(app.root_path, '../.well-known/acme-challenge/'), filename)
-
 @app.route('/', methods=['GET'])
 def index():
     return render_template('hello.html')
